@@ -2,35 +2,16 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import 'register.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: <String, WidgetBuilder>{
-        '/register': (BuildContext context) => new RegisterPage()
-      },
-      home: new MyHomePage(),
-    );
-  }
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -40,27 +21,27 @@ class _MyHomePageState extends State<MyHomePage> {
                 Container(
                   padding: EdgeInsets.fromLTRB(15, 125, 0, 0),
                   child: Text(
-                    'Let\'s',
+                    'New',
                     style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(
                   padding: EdgeInsets.fromLTRB(15, 215, 0, 0),
                   child: Text(
-                    'Meet',
+                    'User',
                     style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.fromLTRB(205, 218, 0, 0),
+                  padding: EdgeInsets.fromLTRB(180, 215, 0, 0),
                   child: Text(
-                    '!',
+                    '.',
                     style: TextStyle(
                         fontSize: 80,
                         fontWeight: FontWeight.bold,
-                        color: Colors.blue[400]),
+                        color: Colors.blue),
                   ),
-                ),
+                )
               ],
             ),
           ),
@@ -92,23 +73,17 @@ class _MyHomePageState extends State<MyHomePage> {
                           borderSide: BorderSide(color: Colors.blue))),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
-                Container(
-                  padding: EdgeInsets.only(top: 15),
-                  child: InkWell(
-                    onTap: () {
-                      log('Forgot Password clicked');
-                    },
-                    child: Text(
-                      'Forgot Password',
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
+                TextField(
+                  decoration: InputDecoration(
+                      labelText: 'CONFIRM PASSWORD',
+                      labelStyle: TextStyle(
                           fontFamily: 'Montserrat',
-                          decoration: TextDecoration.underline),
-                    ),
-                  ),
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blueGrey),
+                      focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blue))),
                 ),
                 SizedBox(
                   height: 40,
@@ -122,11 +97,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     elevation: 7,
                     child: GestureDetector(
                       onTap: () {
-                        log('Login Button Clicked');
+                        log('Register Button Clicked');
                       },
                       child: Center(
                         child: Text(
-                          'LOGIN',
+                          'REGISTER',
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -135,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -146,17 +121,17 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                'New to Meet ?',
+                'Already have an account ?',
                 style: TextStyle(fontFamily: 'Montserrat'),
               ),
               SizedBox(width: 5),
               InkWell(
                 onTap: () {
-                  log('Register clicked');
-                  Navigator.of(context).pushNamed('/register');
+                  log('Login clicked');
+                  Navigator.pop(context);
                 },
                 child: Text(
-                  'Register Now',
+                  'Login Here',
                   style: TextStyle(
                     color: Colors.blue,
                     fontFamily: 'Montserrat',
