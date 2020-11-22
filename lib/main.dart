@@ -8,6 +8,8 @@ import 'package:http/http.dart' as http;
 
 import 'register.dart';
 
+import './model/authentication.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -34,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  Future<bool> postLogin(String email, String password) async {
+  Future<Authentication> postLogin(String email, String password) async {
     log('Start login');
 
     if (email.isNotEmpty && password.isNotEmpty) {
@@ -51,12 +53,12 @@ class _MyHomePageState extends State<MyHomePage> {
       log(response.body.toString());
 
       if (response.statusCode == 200) {
-        return true;
+        return Authentication.fromJson(jsonDecode(response.body));
       }
     }
 
     log('Failed login');
-    return false;
+    return null;
   }
 
   @override
@@ -161,7 +163,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         final userEmail = emailController.text.trim();
                         final userPassword = passwordController.text.trim();
 
-                        if (await postLogin(userEmail, userPassword)) {
+                        var _authenticatedUser;
+
+                        setState(() {
+                          _authenticatedUser =
+                              postLogin(userEmail, userPassword);
+                        });
+
+                        if (await _authenticatedUser != null) {
                           Toast.show("Login Successful", context,
                               duration: Toast.LENGTH_SHORT,
                               gravity: Toast.BOTTOM);
