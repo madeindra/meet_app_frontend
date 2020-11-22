@@ -8,6 +8,10 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -50,6 +54,7 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Column(
               children: <Widget>[
                 TextField(
+                  controller: emailController,
                   decoration: InputDecoration(
                       labelText: 'EMAIL',
                       labelStyle: TextStyle(
@@ -63,6 +68,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 20,
                 ),
                 TextField(
+                  controller: passwordController,
                   decoration: InputDecoration(
                       labelText: 'PASSWORD',
                       labelStyle: TextStyle(
@@ -76,6 +82,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 20,
                 ),
                 TextField(
+                  controller: confirmController,
                   decoration: InputDecoration(
                       labelText: 'CONFIRM PASSWORD',
                       labelStyle: TextStyle(
