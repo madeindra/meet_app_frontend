@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:meet_app_frontend/dahboard.dart';
+import 'package:meet_app_frontend/homepage.dart';
 import 'package:toast/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -22,19 +22,19 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: <String, WidgetBuilder>{
         '/register': (BuildContext context) => new RegisterPage(),
-        '/dashboard': (BuildContext context) => new DashboardPage(),
+        '/home': (BuildContext context) => new HomePage(),
       },
-      home: new MyHomePage(),
+      home: new LoginPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
