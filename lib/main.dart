@@ -63,6 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final node = FocusScope.of(context);
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
       body: Column(
@@ -104,6 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 TextField(
                   controller: emailController,
+                  onEditingComplete: () => node.nextFocus(),
                   decoration: InputDecoration(
                       labelText: 'EMAIL',
                       labelStyle: TextStyle(
@@ -118,6 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 TextField(
                   controller: passwordController,
+                  onEditingComplete: () => node.nextFocus(),
                   decoration: InputDecoration(
                       labelText: 'PASSWORD',
                       labelStyle: TextStyle(

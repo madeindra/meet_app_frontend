@@ -44,6 +44,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    final node = FocusScope.of(context);
     return new Scaffold(
       resizeToAvoidBottomInset: false,
       body: Column(
@@ -85,6 +86,7 @@ class _RegisterPageState extends State<RegisterPage> {
               children: <Widget>[
                 TextField(
                   controller: emailController,
+                  onEditingComplete: () => node.nextFocus(),
                   decoration: InputDecoration(
                       labelText: 'EMAIL',
                       labelStyle: TextStyle(
@@ -99,6 +101,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 TextField(
                   controller: passwordController,
+                  onEditingComplete: () => node.nextFocus(),
                   decoration: InputDecoration(
                       labelText: 'PASSWORD',
                       labelStyle: TextStyle(
@@ -113,6 +116,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 TextField(
                   controller: confirmController,
+                  onEditingComplete: () => node.nextFocus(),
                   decoration: InputDecoration(
                       labelText: 'CONFIRM PASSWORD',
                       labelStyle: TextStyle(
