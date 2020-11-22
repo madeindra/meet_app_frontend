@@ -121,6 +121,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 TextField(
                   controller: passwordController,
                   onEditingComplete: () => node.nextFocus(),
+                  obscureText: true,
+                  enableSuggestions: false,
+                  autocorrect: false,
                   decoration: InputDecoration(
                       labelText: 'PASSWORD',
                       labelStyle: TextStyle(
