@@ -151,6 +151,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Container(
                   height: 45,
+                  width: 250,
                   child: Material(
                     borderRadius: BorderRadius.circular(20),
                     shadowColor: Colors.blueAccent,
