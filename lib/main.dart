@@ -184,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
                           Toast.show("Login Successful", context,
                               duration: Toast.LENGTH_SHORT,
                               gravity: Toast.BOTTOM);
-                          Navigator.of(context).pushNamed('/dashboard');
+                          Navigator.of(context).pushNamed('/home');
                           return;
                         }
                         Toast.show("Login Failed", context,
