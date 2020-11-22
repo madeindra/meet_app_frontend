@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:meet_app_frontend/dahboard.dart';
 import 'package:toast/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: <String, WidgetBuilder>{
-        '/register': (BuildContext context) => new RegisterPage()
+        '/register': (BuildContext context) => new RegisterPage(),
+        '/dashboard': (BuildContext context) => new DashboardPage(),
       },
       home: new MyHomePage(),
     );
@@ -181,6 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           Toast.show("Login Successful", context,
                               duration: Toast.LENGTH_SHORT,
                               gravity: Toast.BOTTOM);
+                          Navigator.of(context).pushNamed('/dashboard');
                           return;
                         }
                         Toast.show("Login Failed", context,
