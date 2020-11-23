@@ -5,10 +5,19 @@ import './register.dart';
 import './login.dart';
 
 void main() {
-  runApp(MyApp());
+  Widget home = new HomePage();
+
+  if (true) {
+    home = new LoginPage();
+  }
+
+  runApp(MyApp(defaultHome: home));
 }
 
 class MyApp extends StatelessWidget {
+  final Widget defaultHome;
+  MyApp({this.defaultHome});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,7 +27,7 @@ class MyApp extends StatelessWidget {
         '/register': (BuildContext context) => new RegisterPage(),
         '/home': (BuildContext context) => new HomePage(),
       },
-      home: new LoginPage(),
+      home: defaultHome,
     );
   }
 }
