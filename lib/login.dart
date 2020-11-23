@@ -18,6 +18,8 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
+  bool rememberMe = false;
+
   Future<Authentication> postLogin(String email, String password) async {
     log('Start login');
 
@@ -118,21 +120,60 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   height: 10,
                 ),
-                Container(
-                  padding: EdgeInsets.only(top: 15),
-                  child: InkWell(
-                    onTap: () {
-                      log('Forgot Password clicked');
-                    },
-                    child: Text(
-                      'Forgot Password',
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Montserrat',
-                          decoration: TextDecoration.underline),
+                Stack(
+                  children: <Widget>[
+                    Container(
+                        child: Transform.scale(
+                      scale: 0.75,
+                      child: SizedBox(
+                        height: 19.5,
+                        width: 12,
+                        child: Checkbox(
+                          onChanged: (value) {
+                            log('Checkbox Remember Me Clicked');
+                            setState(() {
+                              rememberMe = value;
+                            });
+                          },
+                          value: rememberMe,
+                        ),
+                      ),
+                    )),
+                    Container(
+                        padding: EdgeInsets.only(left: 21),
+                        child: InkWell(
+                          onTap: () {
+                            log('Remember Me Tapped');
+                            setState(() {
+                              rememberMe = !rememberMe;
+                            });
+                          },
+                          child: Text(
+                            'Remember Me',
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Montserrat',
+                                decoration: TextDecoration.underline),
+                          ),
+                        )),
+                    Container(
+                      padding: EdgeInsets.only(top: 0, left: 225, right: 0),
+                      child: InkWell(
+                        onTap: () {
+                          log('Forgot Password clicked');
+                        },
+                        child: Text(
+                          'Forgot Password',
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Montserrat',
+                              decoration: TextDecoration.underline),
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
                 SizedBox(
                   height: 40,
