@@ -6,7 +6,7 @@ import 'screen/login.dart';
 import 'util/authenticated.dart';
 
 void main() {
-  final authenticated = Authenticated();
+  final Authenticated authenticated = new Authenticated();
   Widget home = new HomePage();
 
   if (!authenticated.isAuthenticated()) {
