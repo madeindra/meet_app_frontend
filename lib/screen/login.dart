@@ -8,6 +8,7 @@ import 'package:toast/toast.dart';
 import 'package:http/http.dart' as http;
 
 import '../model/authentication.dart';
+import '../util/authenticated.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -15,6 +16,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final Authenticated authenticated = new Authenticated();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -22,6 +24,10 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<Authentication> postLogin(String email, String password) async {
     log('Start login');
+
+    if (rememberMe) {
+      authenticated.setRememberMe();
+    }
 
     if (email.isNotEmpty && password.isNotEmpty) {
       final http.Response response = await http.post(
