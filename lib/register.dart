@@ -56,21 +56,21 @@ class _RegisterPageState extends State<RegisterPage> {
                 Container(
                   padding: EdgeInsets.fromLTRB(15, 125, 0, 0),
                   child: Text(
-                    'New',
+                    'Hello',
                     style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(
                   padding: EdgeInsets.fromLTRB(15, 215, 0, 0),
                   child: Text(
-                    'User',
+                    'There',
                     style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.fromLTRB(180, 215, 0, 0),
+                  padding: EdgeInsets.fromLTRB(230, 215, 0, 0),
                   child: Text(
-                    '.',
+                    '!',
                     style: TextStyle(
                         fontSize: 80,
                         fontWeight: FontWeight.bold,
