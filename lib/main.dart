@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'screen/homepage.dart';
 import 'screen/register.dart';
 import 'screen/login.dart';
+import 'util/authenticated.dart';
 
 void main() {
+  final authenticated = Authenticated();
   Widget home = new HomePage();
 
-  if (true) {
+  if (!authenticated.isAuthenticated()) {
     home = new LoginPage();
   }
 
