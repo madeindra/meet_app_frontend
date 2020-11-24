@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:toast/toast.dart';
 import 'package:http/http.dart' as http;
 
-import './model/authentication.dart';
+import '../model/authentication.dart';
 
 class LoginPage extends StatefulWidget {
   @override

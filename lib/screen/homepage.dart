@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meet_app_frontend/dahboard.dart';
+import 'package:meet_app_frontend/screen/dahboard.dart';
 
 class HomePage extends StatefulWidget {
   @override

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import './homepage.dart';
-import './register.dart';
-import './login.dart';
+import 'screen/homepage.dart';
+import 'screen/register.dart';
+import 'screen/login.dart';
 
 void main() {
   Widget home = new HomePage();
