@@ -16,9 +16,12 @@ class _RegisterPageState extends State<RegisterPage> {
   final passwordController = TextEditingController();
   final confirmController = TextEditingController();
 
-  Future<bool> postRegistration(
-      String email, String password, String confirm) async {
+  Future<bool> postRegistration() async {
     log('Start registration');
+
+    final email = emailController.text.trim();
+    final password = passwordController.text.trim();
+    final confirm = confirmController.text.trim();
 
     if (password == confirm) {
       final http.Response response = await http.post(
@@ -147,12 +150,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       onTap: () async {
                         log('Register Button Clicked');
 
-                        final userEmail = emailController.text.trim();
-                        final userPassword = passwordController.text.trim();
-                        final userConfirm = confirmController.text.trim();
-
-                        if (await postRegistration(
-                            userEmail, userPassword, userConfirm)) {
+                        if (await postRegistration()) {
                           Toast.show("Registration Successful", context,
                               duration: Toast.LENGTH_SHORT,
                               gravity: Toast.BOTTOM);
