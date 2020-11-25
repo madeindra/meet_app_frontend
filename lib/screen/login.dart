@@ -21,6 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   final passwordController = TextEditingController();
 
   bool rememberMe = false;
+  bool obscurePassword = true;
 
   Future<Authentication> postLogin(String email, String password) async {
     log('Start login');
@@ -109,20 +110,32 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20,
                 ),
                 TextField(
-                  controller: passwordController,
-                  onEditingComplete: () => node.nextFocus(),
-                  obscureText: true,
-                  enableSuggestions: false,
-                  autocorrect: false,
-                  decoration: InputDecoration(
+                    controller: passwordController,
+                    onEditingComplete: () => node.nextFocus(),
+                    obscureText: obscurePassword,
+                    enableSuggestions: false,
+                    autocorrect: false,
+                    decoration: InputDecoration(
                       labelText: 'PASSWORD',
                       labelStyle: TextStyle(
                           fontFamily: 'Montserrat',
                           fontWeight: FontWeight.bold,
                           color: Colors.blueGrey),
                       focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue))),
-                ),
+                          borderSide: BorderSide(color: Colors.blue)),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          obscurePassword
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            obscurePassword = !obscurePassword;
+                          });
+                        },
+                      ),
+                    )),
                 SizedBox(
                   height: 10,
                 ),

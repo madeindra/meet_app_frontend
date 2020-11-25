@@ -16,6 +16,9 @@ class _RegisterPageState extends State<RegisterPage> {
   final passwordController = TextEditingController();
   final confirmController = TextEditingController();
 
+  bool obscurePassword = true;
+  bool obscureConfirm = true;
+
   Future<bool> postRegistration() async {
     log('Start registration');
 
@@ -105,17 +108,30 @@ class _RegisterPageState extends State<RegisterPage> {
                 TextField(
                   controller: passwordController,
                   onEditingComplete: () => node.nextFocus(),
-                  obscureText: true,
+                  obscureText: obscurePassword,
                   enableSuggestions: false,
                   autocorrect: false,
                   decoration: InputDecoration(
-                      labelText: 'PASSWORD',
-                      labelStyle: TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blueGrey),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue))),
+                    labelText: 'PASSWORD',
+                    labelStyle: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueGrey),
+                    focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue)),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        obscurePassword
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          obscurePassword = !obscurePassword;
+                        });
+                      },
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 20,
@@ -123,17 +139,30 @@ class _RegisterPageState extends State<RegisterPage> {
                 TextField(
                   controller: confirmController,
                   onEditingComplete: () => node.nextFocus(),
-                  obscureText: true,
+                  obscureText: obscureConfirm,
                   enableSuggestions: false,
                   autocorrect: false,
                   decoration: InputDecoration(
-                      labelText: 'CONFIRM PASSWORD',
-                      labelStyle: TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blueGrey),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue))),
+                    labelText: 'CONFIRM PASSWORD',
+                    labelStyle: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueGrey),
+                    focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.blue)),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        obscureConfirm
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          obscureConfirm = !obscureConfirm;
+                        });
+                      },
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 40,
