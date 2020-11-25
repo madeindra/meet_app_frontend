@@ -40,22 +40,22 @@ class _HomePageState extends State<HomePage>
               icon: selectedItem == 0
                   ? Icon(Icons.near_me_rounded)
                   : Icon(Icons.near_me_outlined),
-              label: ''),
+              label: 'Find'),
           BottomNavigationBarItem(
               icon: selectedItem == 1
                   ? Icon(Icons.favorite_rounded)
                   : Icon(Icons.favorite_outline_rounded),
-              label: ''),
+              label: 'Match'),
           BottomNavigationBarItem(
               icon: selectedItem == 2
                   ? Icon(Icons.messenger_rounded)
                   : Icon(Icons.messenger_outline_rounded),
-              label: ''),
+              label: 'Chat'),
           BottomNavigationBarItem(
               icon: selectedItem == 3
                   ? Icon(Icons.person_rounded)
                   : Icon(Icons.person_outline_rounded),
-              label: ''),
+              label: 'Profile'),
         ],
       ),
     );
