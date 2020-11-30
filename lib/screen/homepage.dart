@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meet_app_frontend/screen/chat.dart';
 import 'package:meet_app_frontend/screen/dahboard.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,7 +14,7 @@ class _HomePageState extends State<HomePage>
   List children = [
     DashboardPage(),
     DashboardPage(),
-    DashboardPage(),
+    ChatPage(),
     DashboardPage(),
   ];
 
