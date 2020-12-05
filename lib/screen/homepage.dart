@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:meet_app_frontend/screen/chat.dart';
 import 'package:meet_app_frontend/screen/dahboard.dart';
+import 'package:meet_app_frontend/screen/match.dart';
+import 'package:meet_app_frontend/screen/profile.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,9 +15,9 @@ class _HomePageState extends State<HomePage>
 
   List children = [
     DashboardPage(),
-    DashboardPage(),
+    MatchPage(),
     ChatPage(),
-    DashboardPage(),
+    ProfilePage(),
   ];
 
   @override
