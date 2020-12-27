@@ -1,55 +1,58 @@
 import 'dart:developer';
 
-class Auth {
-  bool isAuthenticated = false;
-  bool isRemembered = false;
+import 'package:get_storage/get_storage.dart';
 
-  String authToken = "";
-  String refreshToken = "";
-  String socketTicket = "";
+class Auth {
+  final box = GetStorage();
+
+  final String authenticationStatus = "isAuthenticated";
+  final String rememberedStatus = "isRemembered";
+  final String authToken = "authToken";
+  final String refreshToken = "refreshToken";
+  final String socketTicket = "socketTicket";
 
   bool getAuthentication() {
-    return isAuthenticated;
+    return box.read(authenticationStatus) ?? false;
   }
 
-  void setAuthentication(bool authenticationStatus) {
-    log('Authenticated: $authenticationStatus');
-    isAuthenticated = authenticationStatus;
+  void setAuthentication(bool status) {
+    log('Authenticated: $status');
+    box.write(authenticationStatus, status);
   }
 
   bool getRememberMe() {
-    return isRemembered;
+    return box.read(rememberedStatus) ?? false;
   }
 
-  void setRememberMe(bool rememberStatus) {
-    log('Remember me: $rememberStatus');
-    isRemembered = rememberStatus;
+  void setRememberMe(bool status) {
+    log('Remember me: $status');
+    box.write(rememberedStatus, status);
   }
 
   String getAuthToken() {
-    return authToken;
+    return box.read(authToken);
   }
 
   void setAuthToken(String token) {
     log('Auth token: $token');
-    authToken = token;
+    box.write(authToken, token);
   }
 
   String getRefreshToken() {
-    return refreshToken;
+    return box.read(refreshToken);
   }
 
   void setRefreshToken(String token) {
     log('Refresh token: $token');
-    refreshToken = token;
+    box.write(refreshToken, token);
   }
 
   String getSocketTicket() {
-    return socketTicket;
+    return box.read(socketTicket);
   }
 
   void setSocketTicket(String ticket) {
     log('Socket ticket: $ticket');
-    socketTicket = ticket;
+    box.write(socketTicket, ticket);
   }
 }
