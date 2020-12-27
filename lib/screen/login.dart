@@ -57,6 +57,8 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final node = FocusScope.of(context);
+    var _authenticatedUser;
+
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
       body: Column(
@@ -213,14 +215,19 @@ class _LoginPageState extends State<LoginPage> {
                         final userEmail = emailController.text.trim();
                         final userPassword = passwordController.text.trim();
 
-                        var _authenticatedUser;
+                        final Authentication user =
+                            await postLogin(userEmail, userPassword);
 
                         setState(() {
-                          _authenticatedUser =
-                              postLogin(userEmail, userPassword);
+                          _authenticatedUser = user;
                         });
 
-                        if (await _authenticatedUser != null) {
+                        if (_authenticatedUser != null) {
+                          auth.setAuthToken(_authenticatedUser.userAuthToken);
+                          auth.setRefreshToken(
+                              _authenticatedUser.userRefreshToken);
+                          auth.setSocketTicket(_authenticatedUser.userTicket);
+
                           Toast.show("Login Successful", context,
                               duration: Toast.LENGTH_SHORT,
                               gravity: Toast.BOTTOM);
