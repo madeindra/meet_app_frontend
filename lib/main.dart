@@ -12,7 +12,7 @@ void main() async {
   final Auth auth = new Auth();
   Widget home = new HomePage();
 
-  if (!auth.getAuthentication()) {
+  if (!auth.getAuthentication() && !auth.getRememberMe()) {
     home = new LoginPage();
   }
 
