@@ -40,12 +40,6 @@ class _LoginPageState extends State<LoginPage> {
       log(response.body.toString());
 
       if (response.statusCode == 200) {
-        auth.setAuthentication(true);
-
-        if (rememberMe) {
-          auth.setRememberMe(true);
-        }
-
         return Authentication.fromJson(jsonDecode(response.body));
       }
     }
@@ -223,10 +217,16 @@ class _LoginPageState extends State<LoginPage> {
                         });
 
                         if (_authenticatedUser != null) {
+                          auth.setAuthentication(true);
+
                           auth.setAuthToken(_authenticatedUser.userAuthToken);
                           auth.setRefreshToken(
                               _authenticatedUser.userRefreshToken);
                           auth.setSocketTicket(_authenticatedUser.userTicket);
+
+                          if (rememberMe) {
+                            auth.setRememberMe(true);
+                          }
 
                           Toast.show("Login Successful", context,
                               duration: Toast.LENGTH_SHORT,
