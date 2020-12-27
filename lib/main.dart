@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'screen/homepage.dart';
 import 'screen/register.dart';
 import 'screen/login.dart';
 import 'util/auth.dart';
 
-void main() {
+void main() async {
+  await GetStorage.init();
+
   final Auth auth = new Auth();
   Widget home = new HomePage();
 
