@@ -8,7 +8,7 @@ class Auth {
   String refreshToken = "";
   String socketTicket = "";
 
-  getAuthentication() {
+  bool getAuthentication() {
     return isAuthenticated;
   }
 
@@ -17,7 +17,7 @@ class Auth {
     isAuthenticated = authenticationStatus;
   }
 
-  getRememberMe() {
+  bool getRememberMe() {
     return isRemembered;
   }
 
@@ -26,27 +26,30 @@ class Auth {
     isRemembered = rememberStatus;
   }
 
-  getAuthToken() {
+  String getAuthToken() {
     return authToken;
   }
 
   void setAuthToken(String token) {
+    log('Auth token: $token');
     authToken = token;
   }
 
-  getRefreshToken() {
+  String getRefreshToken() {
     return refreshToken;
   }
 
   void setRefreshToken(String token) {
+    log('Refresh token: $token');
     refreshToken = token;
   }
 
-  getSocketTicket() {
+  String getSocketTicket() {
     return socketTicket;
   }
 
   void setSocketTicket(String ticket) {
+    log('Socket ticket: $ticket');
     socketTicket = ticket;
   }
 }
