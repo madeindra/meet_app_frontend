@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 import '../util/websocket.dart';
@@ -12,13 +11,12 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   final Websocket websocket = new Websocket();
-  final WebSocketChannel channel =
-      IOWebSocketChannel.connect('ws://10.0.2.2:8080/chat');
   final TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    websocket.subscribe(channel);
+    websocket.init();
+    WebSocketChannel channel = websocket.getChannel();
 
     return new Scaffold(
       body: Center(
@@ -46,8 +44,8 @@ class _ChatPageState extends State<ChatPage> {
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.send),
           onPressed: () {
-            channel.sink.add(
-                '{"action": "publish", "topic": "test", "message":"${controller.text}"}');
+            websocket.send(3, controller.text);
+            controller.clear();
           }),
     );
   }
