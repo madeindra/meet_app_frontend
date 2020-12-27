@@ -9,7 +9,7 @@ void main() {
   final Authenticated authenticated = new Authenticated();
   Widget home = new HomePage();
 
-  if (!authenticated.isAuthenticated()) {
+  if (!authenticated.getAuthentication()) {
     home = new LoginPage();
   }
 

@@ -26,10 +26,6 @@ class _LoginPageState extends State<LoginPage> {
   Future<Authentication> postLogin(String email, String password) async {
     log('Start login');
 
-    if (rememberMe) {
-      authenticated.setRememberMe();
-    }
-
     if (email.isNotEmpty && password.isNotEmpty) {
       final http.Response response = await http.post(
           'http://10.0.2.2:8080/api/v1/authentication/login',
@@ -44,6 +40,12 @@ class _LoginPageState extends State<LoginPage> {
       log(response.body.toString());
 
       if (response.statusCode == 200) {
+        authenticated.setAuthentication(true);
+
+        if (rememberMe) {
+          authenticated.setRememberMe(true);
+        }
+
         return Authentication.fromJson(jsonDecode(response.body));
       }
     }
