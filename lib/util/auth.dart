@@ -55,4 +55,12 @@ class Auth {
     log('Socket ticket: $ticket');
     box.write(socketTicket, ticket);
   }
+
+  void clear() {
+    box.remove(authenticationStatus);
+    box.remove(rememberedStatus);
+    box.remove(authToken);
+    box.remove(refreshToken);
+    box.remove(socketTicket);
+  }
 }
