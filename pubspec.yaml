@@ -16,6 +16,7 @@ dependencies:
   web_socket_channel: ^1.1.0
   toast: ^0.1.5
   get_storage: ^1.4.0
+  flappy_search_bar: ^1.7.2
 
 dev_dependencies:
   flutter_test:
