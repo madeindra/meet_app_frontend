@@ -30,7 +30,7 @@ class Auth {
     box.write(rememberedStatus, status);
   }
 
-  String getUserId() {
+  int getUserId() {
     return box.read(userId);
   }
 
