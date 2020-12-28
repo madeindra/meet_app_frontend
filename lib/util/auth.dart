@@ -7,6 +7,7 @@ class Auth {
 
   final String authenticationStatus = "isAuthenticated";
   final String rememberedStatus = "isRemembered";
+  final String userId = "userId";
   final String authToken = "authToken";
   final String refreshToken = "refreshToken";
   final String socketTicket = "socketTicket";
@@ -27,6 +28,15 @@ class Auth {
   void setRememberMe(bool status) {
     log('Remember me: $status');
     box.write(rememberedStatus, status);
+  }
+
+  String getUserId() {
+    return box.read(userId);
+  }
+
+  void setUserId(int id) {
+    log('User ID: $id');
+    box.write(userId, id);
   }
 
   String getAuthToken() {
