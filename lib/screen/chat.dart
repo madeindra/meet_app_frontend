@@ -5,7 +5,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:web_socket_channel/web_socket_channel.dart';
 
 import '../widget/chat.dart';
 
@@ -41,7 +40,7 @@ class _ChatPageState extends State<ChatPage> {
       return res["data"];
     }
 
-    log('Failed login');
+    log('Failed getList');
     auth.clear();
     return null;
   }
@@ -55,10 +54,9 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     websocket.init();
-    WebSocketChannel channel = websocket.getChannel();
 
     return new Scaffold(
-      body: Center(
+      body: SafeArea(
         child: Column(
           children: <Widget>[
             FutureBuilder(
