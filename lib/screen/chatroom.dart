@@ -6,12 +6,12 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 
 import '../util/websocket.dart';
 
-class ChatPage extends StatefulWidget {
+class ChatRoomPage extends StatefulWidget {
   @override
-  _ChatPageState createState() => _ChatPageState();
+  _ChatRoomPageState createState() => _ChatRoomPageState();
 }
 
-class _ChatPageState extends State<ChatPage> {
+class _ChatRoomPageState extends State<ChatRoomPage> {
   final Websocket websocket = new Websocket();
   final TextEditingController controller = TextEditingController();
 

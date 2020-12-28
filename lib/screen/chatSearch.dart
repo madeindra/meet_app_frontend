@@ -11,12 +11,12 @@ import '../model/user.dart';
 
 import '../util/auth.dart';
 
-class ChatPage extends StatefulWidget {
+class ChatSearchPage extends StatefulWidget {
   @override
-  _ChatPageState createState() => _ChatPageState();
+  _ChatSearchPageState createState() => _ChatSearchPageState();
 }
 
-class _ChatPageState extends State<ChatPage> {
+class _ChatSearchPageState extends State<ChatSearchPage> {
   final Auth auth = new Auth();
   var futureChat;
 
