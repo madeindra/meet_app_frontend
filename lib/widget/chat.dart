@@ -12,6 +12,14 @@ class ChatWidget extends StatelessWidget {
     return this.userId == senderId ? targetId.toString() : senderId.toString();
   }
 
+  String getFriendPicture(dynamic item) {
+    return item["senderPicture"] ?? "";
+  }
+
+  String getFriendName(dynamic item) {
+    return item["senderName"] ?? "";
+  }
+
   @override
   Widget build(BuildContext context) {
     List<Widget> list = new List<Widget>();
@@ -19,6 +27,8 @@ class ChatWidget extends StatelessWidget {
     data.forEach((item) => {
           list.add(Column(children: <Widget>[
             Text(getFriendId(item["senderId"], item["targetId"])),
+            Text(getFriendPicture(item)),
+            Text(getFriendName(item)),
             Text(item["content"])
           ]))
         });
